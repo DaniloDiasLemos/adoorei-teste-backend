@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->unsignedDecimal("amount");
-            $table->json("products");
+            $table->json("products")->nullable();
+            $table->timestamps();
         });
     }
 

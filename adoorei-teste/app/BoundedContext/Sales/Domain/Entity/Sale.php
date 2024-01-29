@@ -2,9 +2,8 @@
 
 namespace App\BoundedContext\Sales\Domain\Entity;
 
-use App\BOundedContext\Sales\Domain\EntityFactory\SaleFactory;
+use App\BoundedContext\Sales\Domain\EntityFactory\SaleFactory;
 use App\Common\Casts\CastType;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**

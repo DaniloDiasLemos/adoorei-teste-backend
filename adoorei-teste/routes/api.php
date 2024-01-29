@@ -1,5 +1,6 @@
 <?php
 
+use App\BoundedContext\Sales\Infrastructure\InBound\Http\Controllers\SaleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/sales', [SaleController::class, 'paginate']);
+Route::post('/sales', [SaleController::class, 'create']);
+Route::put('/sales/{id}', [SaleController::class, 'update']);
