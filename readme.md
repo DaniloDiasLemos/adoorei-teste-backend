@@ -42,7 +42,7 @@ Não vamos nos preocupar com o cadastro de produtos, porém precisamos ter uma t
 
 Uma vez que temos os produtos em nosso banco, vamos seguir com o registro de venda desses aparelhos.
 
-Não vamos nós preucupar com informações do comprador, dados de pagamento, entrega, possibilidade de descontos.
+Não vamos nós preocupar com informações do comprador, dados de pagamento, entrega, possibilidade de descontos.
 
 Temos que registrar somente a venda. 
 
