@@ -7,7 +7,7 @@ class UpdateSaleCommand
     public function __construct(
         public readonly int $saleId,
         public readonly float $amount,
-        public readonly array $products
+        public readonly ?string $products
     ) {
     }
 }

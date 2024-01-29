@@ -20,9 +20,19 @@ class CreateSaleCommandHandler
 
     private function create(CreateSaleCommand $command): Sale
     {
+        $amount = 0;
+        
+        $products = json_decode($command->products);
+        
+        if ($products) {
+            foreach ($products as $product) {
+                $amount += $product->price * $product->amount;
+            }
+        }
+        
         return $this->saleRepository->create([
-            'amount' => $command->amount,
-            'products' => $command->products
+            'amount' => $amount,
+            'products' => $products ?? []
         ]);
     }
 }

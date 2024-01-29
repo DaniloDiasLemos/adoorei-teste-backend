@@ -6,7 +6,7 @@ class CreateSaleCommand
 {
     public function __construct(
         public readonly float $amount,
-        public readonly array $products
+        public readonly ?string $products
     )
     {}
 }

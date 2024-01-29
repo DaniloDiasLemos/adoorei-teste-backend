@@ -58,9 +58,16 @@ trait TestsSaleController
     
     protected function verifySaleHasBeenUpdatedInDataBase(Sale $existingSale, Sale $updatingSale)
     {
+        $amount = 0;
+        if ($updatingSale->products) {
+            foreach ($updatingSale->products as $product) {
+                $amount += $product['price'] * $product['amount'];
+            }
+        }
+
         $this->assertDatabaseHas('sales', [
             'id' => $existingSale->id,
-            'amount' => $updatingSale->amount
+            'amount' => $amount
         ]);
     }
     

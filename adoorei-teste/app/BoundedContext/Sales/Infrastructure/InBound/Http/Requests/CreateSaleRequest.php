@@ -17,7 +17,7 @@ class CreateSaleRequest extends FormRequest
     {
         return [
             'amount' => 'numeric|required',
-            'products' => 'array|nullable'
+            'products' => 'string|nullable'
         ];
     }
 
@@ -25,7 +25,7 @@ class CreateSaleRequest extends FormRequest
     {
         return new CreateSaleCommand(
             amount: $this->input('amount'),
-            products: $this->input('products') ?? []
+            products: $this->input('products')
         );
     }
 }

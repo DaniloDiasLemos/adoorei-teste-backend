@@ -15,7 +15,20 @@ class SaleControllerIntegrationTest extends TestCase
 
     public function test_should_create()
     {
-        $sale = $this->makeSale();
+        $sale = $this->makeSale(['products' => [
+            [
+                'product_id' => 1,
+                'nome' => 'Celular 1',
+                'price' => 1800,
+                'amount' => 1
+            ],
+            [
+                'product_id' => 2,
+                'nome' => 'Celular 2',
+                'price' => 3200,
+                'amount' => 2
+            ]
+        ]]);
         $createdSaleId = $this->sendCreatePostRequest($sale);
         $this->verifySaleHasBeenCreatedInDataBase($createdSaleId);
     }
@@ -23,7 +36,20 @@ class SaleControllerIntegrationTest extends TestCase
     public function test_should_update()
     {
         $existingSale = $this->createSale();
-        $updatingSale = $this->makeSale();
+        $updatingSale = $this->makeSale(['products' => [
+            [
+                'product_id' => 1,
+                'nome' => 'Celular 1',
+                'price' => 1800,
+                'amount' => 1
+            ],
+            [
+                'product_id' => 2,
+                'nome' => 'Celular 2',
+                'price' => 3200,
+                'amount' => 2
+            ]
+        ]]);
         $this->sendUpdatePutRequest($existingSale, $updatingSale);
         $this->verifySaleHasBeenUpdatedInDataBase($existingSale, $updatingSale);
     }

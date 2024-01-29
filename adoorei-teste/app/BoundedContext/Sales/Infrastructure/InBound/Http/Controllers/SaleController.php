@@ -21,7 +21,7 @@ class SaleController
 
     public function paginate()
     {
-        return [];
+        return Sale::get()->all();
     }
 
     public function create(CreateSaleRequest $request): Sale

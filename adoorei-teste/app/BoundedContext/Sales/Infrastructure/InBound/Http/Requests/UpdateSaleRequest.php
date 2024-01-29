@@ -18,7 +18,7 @@ class UpdateSaleRequest extends FormRequest
     {
         return [
             'amount' => 'numeric|required',
-            'products' => 'array|nullable'
+            'products' => 'string|nullable'
         ];
     }
 
@@ -27,7 +27,7 @@ class UpdateSaleRequest extends FormRequest
         return new UpdateSaleCommand(
             saleId: $saleId,
             amount: $this->input('amount'),
-            products: $this->input('products') ?? []
+            products: $this->input('products')
         );
     }
 }

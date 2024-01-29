@@ -7,8 +7,8 @@ use App\Common\Casts\CastType;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property float $amount 
- * @property array $products 
+ * @property float amount 
+ * @property array products 
  */
 
 class Sale extends Model
@@ -18,8 +18,8 @@ class Sale extends Model
         'products'
     ];
 
-    protected $casts = [
-        "products" => CastType::JSON
+    public $casts = [
+        'products' => CastType::JSON
     ];
 
     public static function factory(): SaleFactory

@@ -21,9 +21,20 @@ class UpdateSaleCommandHandler
     private function update(UpdateSaleCommand $command): Sale
     {
         $sale = $this->saleRepository->findById($command->saleId);
+
+        $amount = 0;
+
+        $products = json_decode($command->products);
+
+        if ($products) {
+            foreach ($products as $product) {
+                $amount += $product->price * $product->amount;
+            }
+        }
+
         $sale->fill([
-            'amount' => $command->amount,
-            'products' => $command->products
+            'amount' => $amount,
+            'products' => $products ?? []
         ]);
 
         $sale->save();
