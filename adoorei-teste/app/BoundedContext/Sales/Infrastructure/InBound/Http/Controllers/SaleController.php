@@ -16,8 +16,8 @@ class SaleController
         private readonly SaleRepository $saleRepository,
         private readonly CreateSaleCommandHandler $createSaleCommandHandler,
         private readonly UpdateSaleCommandHandler $updateSaleCommandHandler
-    )
-    {}
+    ) {
+    }
 
     public function paginate()
     {
@@ -28,9 +28,19 @@ class SaleController
     {
         return $this->createSaleCommandHandler->handle($request->toCreateCommand());
     }
-    
+
     public function update(int $saleId, UpdateSaleRequest $request): Sale
     {
         return $this->updateSaleCommandHandler->handle($request->toUpdateCommand($saleId));
+    }
+
+    public function findById(int $saleId): Sale
+    {
+        return $this->saleRepository->findById($saleId);
+    }
+
+    public function delete(int $saleId): void
+    {
+        $this->saleRepository->deleteById($saleId);
     }
 }

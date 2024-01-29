@@ -31,6 +31,24 @@ trait TestsSaleController
         ->assertSuccessful();
     }
     
+    protected function sendDeleteRequest(Sale $existingSale): void
+    {
+        $this
+        ->deleteJson(sprintf('/api/sales/%s', $existingSale->id))
+        ->assertSuccessful();
+    }
+    
+    protected function sendFindByIdGetRequest(Sale $existingSale): void
+    {
+        $this
+        ->getJson(sprintf('/api/sales/%s', $existingSale->id))
+        ->assertSuccessful()
+        ->assertJson([
+            "id" => $existingSale->id,
+            "amount" => $existingSale->amount
+        ]);
+    }
+    
     protected function verifySaleHasBeenCreatedInDataBase(int $saleId)
     {
         $this->assertDatabaseHas('sales', [
@@ -43,6 +61,13 @@ trait TestsSaleController
         $this->assertDatabaseHas('sales', [
             'id' => $existingSale->id,
             'amount' => $updatingSale->amount
+        ]);
+    }
+    
+    protected function verifySaleHasBeenDeletedInDataBase(Sale $existingSale)
+    {
+        $this->assertDatabaseMissing('sales', [
+            'id' => $existingSale->id,
         ]);
     }
 }
