@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/sales', [SaleController::class, 'paginate']);
 
 Route::get('/sales/{id}', [SaleController::class, 'findById']);
